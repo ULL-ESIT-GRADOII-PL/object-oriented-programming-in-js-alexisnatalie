@@ -5,7 +5,7 @@
   {
     /* tipo es opcional. Debería admitir  new Medida("45.2 Km") */
     /* ademas de new Medida(45.2, "Km") */
-    var regexp = /([-+]?\d+(?:\.\d+)?)\s*([a-zA-Z]+)/;
+    var regexp = /([-+]?\d+(?:\.\d+)?(?:e[+-]?\d+)?)\s*([a-zA-Z]+)/;
 
     if(valor.match(regexp)) {
       valor = valor.match(regexp);
@@ -13,23 +13,14 @@
       this.tipo = valor[2];
     } else {
       this.valor = valor;
-      this.tipo = tipo;
+      this.tipo = tipo || "";
     }
   }
 
   function Temperatura(valor,tipo)
   {
     /* tipo es opcional. Debería admitir new Medida("45.2 F") */
-    var regexp = /^\s*([-+]?\d+(?:\.\d*)?(?:e[-+]?\d+)?)\s*((?:f(?:a(?:r(?:e(?:n(?:h(?:e(?:i(?:t)?)?)?)?)?)?)?)?)|(?:c(?:e(?:l(?:s(?:i(?:u(?:s)?)?)?)?)?)?))\s*$/i;
-
-    if(valor.match(regexp)) {
-      valor = valor.match(regexp);
-      this.valor = valor[1];
-      this.tipo = valor[2];
-    } else {
-      this.valor = valor;
-      this.tipo = tipo;
-    }
+    Medida.call(this, valor, tipo);
   }
 
   Temperatura.prototype = new Medida ();
@@ -37,10 +28,13 @@
 
   function Celsius(valor)
   {
-
+    Temperatura.call(this, valor, "c");
   }
 
+  function Kelvin(valor)
+  {
 
+  }
 
   function Farenheit(valor)
   {
