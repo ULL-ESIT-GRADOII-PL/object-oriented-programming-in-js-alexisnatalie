@@ -3,23 +3,12 @@
 
   function Medida(valor,tipo)
   {
-    /* tipo es opcional. Debería admitir  new Medida("45.2 Km") */
-    /* ademas de new Medida(45.2, "Km") */
-    /*var regexp = /([-+]?\d+(?:\.\d+)?(?:e[+-]?\d+)?)\s*([a-zA-Z]+)/;
-    var valor = valor.match(regexp);
-
-    if(valor) {
-      this.valor = valor[1];
-      this.tipo = valor[2];
-    } else { */
       this.valor = valor;
       this.tipo = tipo || "";
-    //}
   }
 
   function Temperatura(valor,tipo)
   {
-    /* tipo es opcional. Debería admitir new Medida("45.2 F") */
     Medida.call(this, valor, tipo);
   }
 
@@ -90,6 +79,9 @@
         elemento  = document.getElementById('converted'),
         /* Extienda la RegeExp a la especificación. use una XRegExp */
         regexp    = /^\s*([-+]?\d+(?:\.\d+)?(?:e[+-]?\d+)?)\s*([a-z,A-Z]+)\s*$/i;
+        entrada = XRegExp('^\s*(?<val> [-+]?\d+(?:\.\d+)?(?:e[+-]?\d+)?)  \n' +
+                          '\s*(?<tip> (?:f(?:a(?:r(?:e(?:n(?:h(?:e(?:i(?:t)?)?)?)?)?)?)?)?)|(?:c(?:e(?:l(?:s(?:i(?:u(?:s)?)?)?)?)?)?)|(?:k(?:e(?:l(?:v(?:i(?:n)?)?)?)?)?)) \n' +
+                          '\s*(?:to)?\s*(?<to> [fck])$ ', 'i');
         valor     = valor.match(regexp);
 
     if (valor) {
