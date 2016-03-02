@@ -105,8 +105,8 @@
           elemento.innerHTML = celsius.toFahrenheit().toFixed(2) + " Fahrenheit";
           break;
         case 'f':
-          var Fahrenheit = new Fahrenheit(numero);
-          elemento.innerHTML = Fahrenheit.toCelsius().toFixed(2) + " Celsius";
+          var fahrenheit = new Fahrenheit(numero);
+          elemento.innerHTML = fahrenheit.toCelsius().toFixed(2) + " Celsius";
           break;
 
         default:
