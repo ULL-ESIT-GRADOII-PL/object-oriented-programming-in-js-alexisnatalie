@@ -78,18 +78,19 @@
     var valor     = document.getElementById('convert').value,
         elemento  = document.getElementById('converted'),
         /* Extienda la RegeExp a la especificación. use una XRegExp */
-        regexp    = /^\s*([-+]?\d+(?:\.\d+)?(?:e[+-]?\d+)?)\s*([a-z,A-Z]+)\s*$/i;
-        entrada = XRegExp('^\s*(?<val> [-+]?\d+(?:\.\d+)?(?:e[+-]?\d+)?)  \n' +
-                          '\s*(?<tip> (?:f(?:a(?:r(?:e(?:n(?:h(?:e(?:i(?:t)?)?)?)?)?)?)?)?)|(?:c(?:e(?:l(?:s(?:i(?:u(?:s)?)?)?)?)?)?)|(?:k(?:e(?:l(?:v(?:i(?:n)?)?)?)?)?)) \n' +
-                          '\s*(?:to)?\s*(?<to> [fck])$ ', 'i');
-        /*date = XRegExp('(?<val> [-+]?[0-9]+(\.[0-9]+)?(?:e[+-]?[0-9]+)?) # val ' +
-                          '(?<tip> [a-z]+) # tip','x');*/
-        valor     = valor.match(regexp);
+        //regexp    = /^\s*([-+]?\d+(?:\.\d+)?(?:e[+-]?\d+)?)\s*([a-z,A-Z]+)\s*$/i;
+        regexp = XRegExp('(?<val> [-+]?[0-9]+(\.[0-9]+)?(?:e[+-]?[0-9]+)?) # val \n' +
+                          '([ ]*) \n' +
+                          '(?<tip> [fck]+) # tip \n' +
+                          '([ ]*) \n' +
+                          '(?<to> (to))? # to \n' +
+                          '([ ]*) \n' +
+                          '(?<para> [fck]+) # para','x');
+          valor = XRegExp.exec(valor, regexp);
 
     if (valor) {
-      var numero = valor[1],
-          tipo   = valor[2].toLowerCase();
-
+      var numero = valor.val,
+          tipo   = valor.tip.toLowerCase();
       numero = parseFloat(numero);
       console.log("Valor: " + numero + ", Tipo: " + tipo);
 
