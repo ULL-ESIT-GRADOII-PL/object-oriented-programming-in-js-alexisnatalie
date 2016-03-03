@@ -1,5 +1,5 @@
 html {
-    background-color: #eee;
+    background-image: url(http://files.catbox.moe/ce9507.jpg);
 }
 
 
@@ -9,11 +9,15 @@ footer {
     left: 0;
     width: 100%;
     padding: 10px;
-    background-color: #222;
+    background-color: white;
+}
+
+p, label {
+  color: white;
 }
 
 footer a {
-    color: #FFF;
+    color: #222;
     text-decoration: none;
 }
 
@@ -23,10 +27,12 @@ footer a {
 
 h4 {
     font-weight: 500;
+    color: #32EC9B;
 }
 
 span {
-    color: green;
+    color: #0ED2F9;
+    font-size: 18px;
 }
 
 @media (max-width: 550px) {
