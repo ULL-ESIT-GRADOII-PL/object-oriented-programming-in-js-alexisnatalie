@@ -77,15 +77,15 @@
   exports.convertir = function() {
     var valor     = document.getElementById('convert').value,
         elemento  = document.getElementById('converted'),
-        regexp = XRegExp('^([ ]*) \n' +
-                          '(?<val> [-+]?[0-9]+(\.[0-9]+)?(?:e[+-]?[0-9]+)?) # val \n' +
-                          '([ ]*) \n' +
+        regexp = XRegExp('^(\\s*) \n' +
+                          '(?<val> [-+]?[0-9]+(\\.[0-9]+)?(?:e[+-]?[0-9]+)?) # val \n' +
+                          '(\\s*) \n' +
                           '(?<tip> [fckFCK]) # tip \n' +
-                          '([ ]*) \n' +
+                          '(\\s*) \n' +
                           '(?<to> (to))? # to \n' +
-                          '([ ]*) \n' +
+                          '(\\s*) \n' +
                           '(?<para> [fckFCK]) # para \n' +
-                          '([ ]*)$','x');
+                          '(\\s*)$','x');
           valor = XRegExp.exec(valor, regexp);
 
     if (valor) {
